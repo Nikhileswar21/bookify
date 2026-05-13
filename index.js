@@ -2,9 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 
+app.use(bodyParser.json());
+
+app.use(function(req, res, next){
+    console.log('a new req incoming');
+    next();
+});
+
 let books = [{
     id: '1',
     title: 'The Great Gatsby',
+},
+{
+    id : '2',
+    title: "To Kill a Mockingbird"
 } ];
 
 app.get('/books', function(req, res){
