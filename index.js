@@ -1,13 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
+const { logs } = require('./middlewares/logs');
+const { AnotherLog } = require('./middlewares/logs');
 
 app.use(bodyParser.json());
-
-app.use(function(req, res, next){
-    console.log('a new req incoming');
-    next();
-});
+app.use(logs);
+app.use(AnotherLog('POST'));
 
 let books = [{
     id: '1',
