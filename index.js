@@ -3,41 +3,19 @@ const bodyParser = require('body-parser');
 const app = express();
 const { logs } = require('./middlewares/logs');
 const { AnotherLog } = require('./middlewares/logs');
+const bookRoutes = require('./routes/book');
+
 
 app.use(bodyParser.json());
+
 app.use(logs);
 app.use(AnotherLog('POST'));
 
-let books = [{
-    id: '1',
-    title: 'The Great Gatsby',
-},
-{
-    id : '2',
-    title: "To Kill a Mockingbird"
-} ];
+app.use("/", bookRoutes);
 
-app.get('/books', function(req, res){
-    res.json({ books });
-});
 
-app.get('/books/:bookId', function(req, res){
-    const bookId = req.params.bookId;
-    const book = books.find(e => e.id === bookId);
-    res.json({ book });
-});
 
-app.post('/books', function(req, res){
-    const book = req.body;
-    books.push(book);
-    res.json({book}); 
-});
 
-app.delete('/books/:bookId', function(req, res){
-    const bookId = req.params.bookId;
-    books = books.filter(e => e.id !== bookId);
-    res.json({ message: `Book with id ${bookId} deleted successfully` });   
-});
 
 
 
