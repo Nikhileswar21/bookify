@@ -4,8 +4,9 @@ const app = express();
 const { logs } = require('./middlewares/logs');
 const { AnotherLog } = require('./middlewares/logs');
 const bookRoutes = require('./routes/book');
+const path = require('path');
 
-
+app.use(express.static(path.resolve('./public')));    
 app.use(bodyParser.json());
 
 app.use(logs);

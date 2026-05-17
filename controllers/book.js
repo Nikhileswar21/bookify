@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 let books = [{
     id: '1',
     title: 'The Great Gatsby',
@@ -8,7 +10,8 @@ let books = [{
 } ];
 
 function handleGetAllBooks(req, res){
-    res.json({ books });
+    const htmlRead = fs.readFileSync(path.resolve('books.html'),'utf-8');
+    return res.end(htmlRead.replace('books', JSON.stringify(books)));
 }
 
 function handleGetBookById(req, res){
