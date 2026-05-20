@@ -15,15 +15,19 @@
         <table>
         <thead>
             <tr>
-                <th>ID</th>
+                <th>SI. no</th>
                 <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            <% books.forEach(book => { %>
+            <% books.forEach((book , index)=> { %>
                 <tr>
-                    <td><%= book.id %></td>
-                    <td><%= book.title %></td>
+                    <td> <%= index + 1 %> </td>
+                    <td><a href ="/books/<%= book._id %>"><%= book.Bookname %></a></td>
+                    <td><%= book.Author %></td>
+                    <td><%= book.Price %></td>
                 </tr>
             <% }) %>
         </tbody>
