@@ -6,6 +6,9 @@ const { AnotherLog } = require('./middlewares/logs');
 const bookRoutes = require('./routes/book');
 const path = require('path');
 
+app.set('view engine', 'ejs');
+app.set('views', path.resolve('./view'));
+
 app.use(express.static(path.resolve('./public')));    
 app.use(bodyParser.json());
 
