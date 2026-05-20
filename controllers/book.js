@@ -12,7 +12,9 @@ async function handleGetAllBooks(req, res){
 async function handleGetBookById(req, res){
     const bookId = req.params.bookId;
     const book = await Book.findById(bookId);
-    res.render("book", { book });
+    console.log(`book retrieved with id ${bookId}`);
+    res.render("book", {book});
+    
 }
 
 async function handleCreateBook(req, res){
