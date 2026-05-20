@@ -5,6 +5,11 @@ const { logs } = require('./middlewares/logs');
 const { AnotherLog } = require('./middlewares/logs');
 const bookRoutes = require('./routes/book');
 const path = require('path');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/bookify')
+.then(() => console.log('mongoDB database connected'))
+.catch(err => console.log("failed to connect",err));
 
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./view'));
