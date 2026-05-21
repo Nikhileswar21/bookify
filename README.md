@@ -4,10 +4,10 @@ Bookify is an backend written using nodeJs and express using the MVC architectur
 
 ## Installation
 
-Use the package manager [npm](https://expressjs.com/en/) to install express.
+Use the package manager [npm](https://expressjs.com/en/) to install express.Ensure you have nodeJS runtime Environment.
 
 ```bash
-npm install express
+npm install express 
 ```
 
 ## Dependencies
