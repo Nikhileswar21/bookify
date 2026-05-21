@@ -19,6 +19,7 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Price</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -28,11 +29,20 @@
                     <td><a href ="/books/<%= book._id %>"><%= book.Bookname %></a></td>
                     <td><%= book.Author %></td>
                     <td><%= book.Price %></td>
+                    <td><button onclick="deleteBook('<%= book._id %>')">Delete</button></td>
                 </tr>
             <% }) %>
         </tbody>
     </table>
         <% }%>
+        <script>
+            async function deleteBook(bookId){
+                await fetch(`/books/${bookId}`, {
+                    method: 'DELETE'
+                });
+                window.location.reload();
+            }
+        </script>
 
 </body>
 </html>

@@ -23,9 +23,9 @@ async function handleCreateBook(req, res){
     res.status(201).json("success"); 
 }
 
-function handleDeleteBook(req, res){
+async function handleDeleteBook(req, res){
     const bookId = req.params.bookId;
-    books = books.filter(e => e.id !== bookId);
+    await Book.findByIdAndDelete(bookId);
     res.json({ message: `Book with id ${bookId} deleted successfully` });   
 }
 
